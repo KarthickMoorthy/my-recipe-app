@@ -4,6 +4,7 @@ import { Recipe } from '../recipes/recipe.modal';
 import { RecipeService } from '../recipes/recipe.service';
 import { map, tap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class DataStorageService {
     private authservice: AuthService
   ) {}
 
-  storeRecipes() {
+  storeRecipes(): void {
     const recipes = this.recipeService.getRecipes();
 
     this.http
@@ -28,7 +29,7 @@ export class DataStorageService {
       });
   }
 
-  fetchRecipes() {
+  fetchRecipes(): Observable<Recipe[]> {
     return this.http
       .get<Recipe[]>(
         'https://ng-course-recipe-b2b60-default-rtdb.firebaseio.com/recipes.json'

@@ -23,10 +23,10 @@ export class RecipeResolverService implements Resolve<Recipe[]> {
   ): Recipe[] | Observable<Recipe[]> | Promise<Recipe[]> {
     const recipes: Recipe[] = this.recipeService.getRecipes();
 
-    if (recipes.length == 0) {
+    if (recipes.length === 0) {
       return this.dataStorageService.fetchRecipes();
     } else {
-      recipes;
+      return recipes;
     }
   }
 }

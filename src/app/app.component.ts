@@ -8,7 +8,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'my-recipe-app';
-  
+
   constructor(private authService: AuthService){}
 
   ngOnInit(): void {
